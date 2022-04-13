@@ -1,0 +1,11 @@
+{
+	"Create h1 style": {
+		"prefix": "log",
+		"body": [
+			"h1{",
+            "\tcolor: $1;",
+            "}"
+		],
+		"description": "h1 color"
+	}
+}

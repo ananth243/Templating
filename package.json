@@ -4,20 +4,39 @@
 	"description": "An extension where you can create custom snippets of code",
 	"version": "0.0.1",
 	"engines": {
-		"vscode": "^1.66.0"
+		"vscode": "^1.64.1"
 	},
 	"categories": [
-		"Other"
+		"Other",
+		"Snippets"
 	],
 	"activationEvents": [
-        "onCommand:helloworld.helloWorld"
+        "onCommand:templating.createSnippet"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
+		"snippets": [
+			{
+				"language": "javascript",
+				"path": "./javascript.json"
+			},
+			{
+				"language": "typescript",
+				"path": "./typescript.json"
+			},
+			{
+				"language": "python",
+				"path": "./python.json"
+			},
+			{
+				"language": "css",
+				"path": "./css.json"
+			}
+		],
 		"commands": [
 			{
-				"command": "helloworld.helloWorld",
-				"title": "Hello World"
+				"command": "templating.createSnippet",
+				"title": "Create Snippet"
 			}
 		]
 	},
