@@ -1,12 +1,8 @@
-import {
-  ExtensionContext,
-  commands,
-  window,
-} from "vscode";
-import {python as Python} from './python';
-import {javascript as Javascript} from './javascript';
-import {css as CSS} from './css';
-import {typescript as Typescript} from './typescript';
+import { ExtensionContext, commands, window } from "vscode";
+import { python as Python, DeletePython } from "./python";
+import { javascript as Javascript, DeleteJavascript } from "./javascript";
+import { css as CSS, DeleteCSS } from "./css";
+import { typescript as Typescript, DeleteTypescript } from "./typescript";
 
 export function activate(context: ExtensionContext) {
   let disposable = commands.registerCommand("templating.createSnippet", () => {
@@ -14,10 +10,10 @@ export function activate(context: ExtensionContext) {
     const options: {
       [key: string]: (context: ExtensionContext) => Promise<void>;
     } = {
-      Python,
+      Typescript,
       Javascript,
+      Python,
       CSS,
-      Typescript
     };
     const quickPick = window.createQuickPick();
     quickPick.items = Object.keys(options).map((label) => ({ label }));
@@ -28,8 +24,35 @@ export function activate(context: ExtensionContext) {
     });
     quickPick.onDidHide(() => quickPick.dispose());
     quickPick.show();
-    // Ask them to reload window?
+    window.showInformationMessage(
+      "You will need to reload your window for the changes to show"
+    );
+  });
+  let deleted = commands.registerCommand("templating.deleteSnippet", () => {
+    const Typescript  = DeleteTypescript;
+    const CSS  = DeleteCSS;
+    const Javascript  = DeleteJavascript;
+    const Python  = DeletePython;
+    const options: {
+      [key: string]: (context: ExtensionContext) => Promise<void>;
+    } = {
+      Typescript,
+      Javascript,
+      Python,
+      CSS
+    };
+    const quickPick = window.createQuickPick();
+    quickPick.items = Object.keys(options).map((label) => ({ label }));
+    quickPick.onDidChangeSelection((selection) => {
+      if (selection[0]) {
+        options[selection[0].label](context).catch(console.error);
+      }
+    });
+    quickPick.onDidHide(() => quickPick.dispose());
+    quickPick.show();
+    window.showInformationMessage('You will have to reload the window');
   });
   context.subscriptions.push(disposable);
+  context.subscriptions.push(deleted);
 }
 export function deactivate() {}
