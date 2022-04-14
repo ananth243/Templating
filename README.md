@@ -6,6 +6,7 @@ This extension allows you to create snippets of code for your different files. I
 
 To get started simply install the extension and you have two choices in the command pallete, create or delete a snippet.
 
+![demo](https://github.com/ananth243/Templating/blob/master/demo.gif?raw=true)
 ## Known Issues
 Support only exists for CSS, Typescript, Javascript and python.
 
