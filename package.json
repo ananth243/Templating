@@ -7,7 +7,7 @@
 	},
 	"publisher": "AnanthRaghav",
 	"description": "An extension where you can create custom snippets of code",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"engines": {
 		"vscode": "^1.64.1"
 	},
