@@ -1,6 +1,11 @@
 {
   "name": "customizer",
 	"displayName": "The Customizer",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/ananth243/Templating"
+	},
+	"publisher": "AnanthRaghav",
 	"description": "An extension where you can create custom snippets of code",
 	"version": "0.0.1",
 	"engines": {
@@ -54,7 +59,7 @@
 		"test": "node ./out/test/runTest.js"
 	},
 	"devDependencies": {
-		"@types/vscode": "^1.66.0",
+		"@types/vscode": "^1.64.1",
 		"@types/glob": "^7.2.0",
 		"@types/mocha": "^9.1.0",
 		"@types/node": "14.x",
